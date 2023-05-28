@@ -8,35 +8,19 @@ input = input.split(' ').map((item) => +item);
 solution(input[0], input[1], input[2]);
 
 function solution(a, b, c) {
-    let reward;
-    let saveNum;
+    let reward = 0;
+    let saveNum = 0;
 
-    if ((a == b) & (b == c)) {
-        saveNum = c;
-        reward = 10000 + saveNum * 1000;
-    } else if ((a == b) & (b != c)) {
-        saveNum = b;
-        reward = 1000 + saveNum * 100;
-    } else if ((a == c) & (b != c)) {
-        saveNum = c;
-        reward = 1000 + saveNum * 100;
-    } else if ((b == c) & (a != c)) {
-        saveNum = c;
-        reward = 1000 + saveNum * 100;
-    } else {
-        if (a > b) {
-            if (a > c) {
-                saveNum = a;
-            } else {
-                saveNum = c;
-            }
+    if (a === b && a === c) {
+        reward = 10000 + a * 1000;
+    } else if (a === b || a === c || b === c) {     //a 를 기준으로 잡고 수 비교
+        if (a === b || a === c) {
+            reward = 1000 + a * 100;
         } else {
-            if (b > c) {
-                saveNum = b;
-            } else {
-                saveNum = c;
-            }
+            reward = 1000 + b * 100;
         }
+    } else {
+        saveNum = Math.max(...input);   // 배열 중에서 최대인 값 찾기
         reward = saveNum * 100;
     }
 
