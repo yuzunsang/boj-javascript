@@ -1,9 +1,10 @@
 const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
+
 const testCaseArray = [];
-for (let i = 0; i < input.length; ++i) {
-    if (input[i] === '') {
+for (let i = 0; i < input.length - 1; ++i) {
+    if (input[i] === '0 0') {
         break;
     }
     const tempValue = input[i].split(' ').map((item) => +item);
