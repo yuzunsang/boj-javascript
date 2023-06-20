@@ -1,10 +1,9 @@
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
-let input = fs.readFileSync(filePath).toString().split('\n');
+// const alert = console.log.bind(console);
 
-for (i = 1 ; i <= +input[0] ; i++) {
+let fruit = prompt("어떤 과일을 구매하시겠습니까?", "apple");
 
-    let tempValue = input[i].split(' ').map((item) => +item);
-    let sum = tempValue[0] + tempValue[1];
-    console.log(`Case #${i}: ${sum}`);
-}
+let bag = {
+    [fruit] : 5,
+};
+
+alert(bag.apple);
