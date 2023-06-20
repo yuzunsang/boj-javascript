@@ -8,7 +8,7 @@ input = input.split(' ').map((item) => +item);
 solution(input[0]);
 
 function solution(N) {
-    for(i=1;i<=9;i++) {
+    for(i=1; i<=9; i++) {
         console.log(`${N} * ${i} = ${N * i}`);
     }
 }
