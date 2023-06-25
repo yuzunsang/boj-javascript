@@ -1,13 +1,18 @@
-const alert = console.log.bind(console);
+// const alert = console.log.bind(console);
 
-let arr = [1, 2];
+let map = new Map();
 
-let arrLike = {
-  0: "something",
-  1: "else",
-  length: 2,
+let number = 0;
+let str = 'string';
+let obj = {a : 1};
+let fnc = () => {
+  console.log('fnc');
+}
 
-  [Symbol.isConcatSpreadable]: true
-};
+map.set('number', 0);
+map.set(str, 1); // key에 string 가능
+map.set(obj, 2); //key에 object 가능
+map.set(fnc, 3); // key에 함수 가능
 
-alert(arr.concat(arrLike));
+
+console.log(map.has('number'));
