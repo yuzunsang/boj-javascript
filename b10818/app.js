@@ -10,15 +10,10 @@ solution(arrayLength, items);
 function solution(arrayLength, items) {
     let min = 1000001;
     let max = -1000001;
-
+ 
     for (let i = 0; i < arrayLength; i++) {
-        item = items[i];
-        if (min > item) {
-            min = item;
-        }
-        if (max < item) {
-            max = item;
-        }
+        if (items[i] > max) max = items[i];
+        if (items[i] < min) min = items[i];
     }
 
     console.log(`${min} ${max}`);

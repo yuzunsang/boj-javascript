@@ -1,9 +1,13 @@
-// const alert = console.log.bind(console);
+const alert = console.log.bind(console);
 
-let fruit = prompt("어떤 과일을 구매하시겠습니까?", "apple");
+let arr = [1, 2];
 
-let bag = {
-    [fruit] : 5,
+let arrLike = {
+  0: "something",
+  1: "else",
+  length: 2,
+
+  [Symbol.isConcatSpreadable]: true
 };
 
-alert(bag.apple);
+alert(arr.concat(arrLike));
