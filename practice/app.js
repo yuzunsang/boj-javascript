@@ -1,9 +1,9 @@
-// const alert = console.log.bind(console);
+const alert = console.log.bind(console);
 
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
-let input = fs.readFileSync(filePath).toString().split('\n');
+let sum = (a, b) => a + b;
 
-input = input[0];
+sum = function(a, b) {
+    return a + b;
+}
 
-console.log(input.length);
+alert(sum(1, 2));
