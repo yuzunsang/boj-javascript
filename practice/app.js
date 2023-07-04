@@ -1,9 +1,8 @@
 const alert = console.log.bind(console);
 
-let sum = (a, b) => a + b;
+let message = 'Hello';
+let phrase = message;
 
-sum = function(a, b) {
-    return a + b;
-}
-
-alert(sum(1, 2));
+let user = {
+    name : 'John'
+};
