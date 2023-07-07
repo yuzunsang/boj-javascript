@@ -20,10 +20,11 @@ function solution(max, arr, row, newMatrix) {
                 max = newMatrix[i][j];
                 arr = i + 1;
                 row = j + 1;
+                position = `${arr} ${row}`; 
             }
         }
     }
-    // let 
+    
     console.log(max);
-    console.log([arr, row]);
+    console.log(position);
 }
