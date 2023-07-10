@@ -2,22 +2,22 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-input = input[0];
-input = input.split(' ').map((item) => +item);
-solution(input[0], input[1]);
+const [H, M] = input[0].split(' ').map((item) => +item);
 
-function solution(H ,M) {
-    if (M >= 45) {
-        M -= 45;
-    } else {
-        if (H == 0) {
-            H += 23;
-            M += 15;
-        } else {
-            H -= 1;
-            M += 15;
-        }
-    }
+solution(H, M);
+
+function solution(hr, min) {
+    let tempMin = hr * 60 + min;
     
-    console.log(H, M)
+    if (tempMin < 45) {
+        tempMin += 24 * 60;
+    }
+
+    tempMin -= 45;
+    
+    hr = Math.floor(tempMin / 60);
+    min = tempMin - hr * 60;
+
+    console.log(hr);
+    console.log(min);
 }

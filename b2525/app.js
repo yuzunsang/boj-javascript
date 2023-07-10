@@ -2,17 +2,20 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-let hr = +input[0].split(' ')[0];
-let min = +input[0].split(' ')[1];
-let op_min = +input[1];
+const [hr, min] = input[0].split(' ').map((item) => +item);
+const reqMin = +input[1];
 
-let temp = hr * 60 + min + op_min;
+solution(hr, min, reqMin);
 
-min = temp % 60;
-hr = (temp - min) / 60;
+function solution(hr, min, reqMin) {
+    let tempMin = hr * 60 + min + reqMin;
+    
+    if (tempMin >= 24 * 60) {
+        tempMin -= 24 * 60;
+    }
 
-if (hr >= 24) {
-    hr -= 24;
+    hr = Math.floor(tempMin / 60);
+    min = tempMin - hr * 60;
+    
+    console.log(`${hr} ${min}`);
 }
-
-console.log(hr, min);

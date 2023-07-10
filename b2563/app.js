@@ -2,17 +2,23 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-const papers = +input[0];
-// 3
-// let matrix = [];
+let arr = Array.from(Array(100), () => Array(100).fill(false));
+const n = +input[0];
 
-for (let i = 1; i <= 3; i++) {
-    let tempMat = [];
-    // matrix.push(tempMat);
+presolution(n);
 
-    let [x, y] = input[i].split(' ').map((item) => +item);
+function presolution(n) {
+    let data = [];
 
-    tempMat += [x, y];
-    tempMat += [x + 10, y + 10];
-    console.log(tempMat);
+    for (let i = 1; i <= n; i++) {
+        data.push(+input[i]);
+    }
+
+    console.log(data);
 }
+
+// solution(n, data);
+
+// function solution(n, data) {
+
+// }

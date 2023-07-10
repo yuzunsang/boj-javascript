@@ -4,10 +4,10 @@ let input = fs.readFileSync(filePath).toString().split('\n');
 
 solution(+input[0]);
 
-function solution(num) {
-    if ((num % 4 === 0 && num % 100 !== 0) || (num % 400 === 0)) {
-        console.log(1)
+function solution(year) {
+    if (((year % 4) === 0 && (year % 100) !== 0) || (year % 400 === 0)) {
+        console.log(1);
     } else {
-        console.log(0)
+        console.log(0);
     }
 }
