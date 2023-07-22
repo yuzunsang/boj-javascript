@@ -2,14 +2,18 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-let total = +input[0];
-let cnt = +input[1];
-let sum = 0;
+const writtenSum = +input[0];
+const n = +input[1];
 
-for (let i = 1; i <= cnt; i++) {
-    let tempValue = input[i + 1].split(' ').map((item) => +item);
+let calSum = 0;
 
-    sum += tempValue[0] * tempValue[1];
+for (let i = 0; i < n; i++) {
+    let [a, b] = input[i + 2].split(' ').map((item) => +item);
+    calSum += a * b;
 }
 
-console.log((total === sum) ? "Yes" : "No");
+if (writtenSum === calSum) {
+    console.log('Yes');
+} else {
+    console.log('No');
+}
