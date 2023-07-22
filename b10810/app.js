@@ -12,6 +12,17 @@ function solution(N, M) {
     for (let i = 1; i <= M; i++) {
         let [start, end, k] = input[i].split(' ').map((item) => +item);
 
+        for (let j = start; j <= end; j++) {
+            arr[j - 1] = k;
+        }
         
     }
+
+    for (let i = 0; i < N; i++) {
+        if (arr[i] === undefined) {
+            arr[i] = 0;
+        }
+    }
+    
+    console.log(arr.join(' '));
 }

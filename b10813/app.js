@@ -3,18 +3,18 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
 const [N, M] = input[0].split(' ').map((item) => +item);
-let arr = [];
+let arr = Array(N).fill(1).map((a, b) => a + b);
+// [ 1, 2, 3, 4, 5 ]
+solution(N, M);
 
-for (let i = 0; i < N; i++) {
-    arr[i] = i + 1;
+function solution(N, M) {
+    for (let i = 1; i <= M; i++) {
+        let [a, b] = input[i].split(' ').map((item) => +item);
+        
+        let tmpValue = arr[a - 1];
+        arr[a - 1] = arr[b - 1];
+        arr[b - 1] = tmpValue;
+    }
+
+    console.log(arr.join(' '));
 }
-
-for (let j = 1; j <= M; j++) {
-    let [a, b] = input[j].split(' ').map((item) => +item);
-
-    let temp = arr[a - 1];
-    arr[a - 1] = arr[b - 1];
-    arr[b - 1] = temp;
-}
-
-console.log(arr.join(' '));
