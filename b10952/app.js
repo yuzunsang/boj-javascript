@@ -2,23 +2,10 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-const testCaseArray = [];
-for (let i = 0; i < input.length - 1; ++i) {
-    if (input[i] === '0 0') {
-        break;
-    }
-    const tempValue = input[i].split(' ').map((item) => +item);
-    testCaseArray.push({ A: tempValue[0], B: tempValue[1] });
-}
-solution(testCaseArray);
-function solution(testcaseArray) {
-    let A = 0;
-    let B = 0;
-    let idx = 0;
-    while (idx !== testcaseArray.length) {
-        A = testcaseArray[idx].A;
-        B = testcaseArray[idx].B;
-        console.log(A + B);
-        idx++;
-    }
+for (let i = 0; ; i++) {
+    let [a, b] = input[i].split(' ').map((item) => +item);
+
+    if (a === 0 && b === 0) break;
+    
+    console.log(a + b);
 }
