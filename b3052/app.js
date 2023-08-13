@@ -2,14 +2,12 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-const userNum = [];
+const nums = [];
 
 for (let i = 0; i < 10; i++) {
-    let num = input[i] % 42;
-
-    if (userNum.indexOf(num) == -1) {
-        userNum.push(num);
+    if (nums.indexOf(input[i] % 42) == -1) {
+        nums.push(input[i] % 42);
     }
-};
+}
 
-console.log(userNum.length);
+console.log(nums.length);
