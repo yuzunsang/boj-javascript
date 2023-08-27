@@ -13,12 +13,13 @@ rl.on("line", function (line) {
     process.exit();
 })
 
-function solution(x, y) {
-    let quad = 0;
-    quad = (x > 0 && y > 0) ? 1
-        : (x < 0 && y > 0) ? 2
-        : (x < 0 && y < 0) ? 3
-        : 4;
-
-    console.log(quad);
+function solution (x, y) {
+    if (x > 0) {
+        if (y > 0) console.log(1);
+        else console.log(4);
+        
+    } else {
+        if (y > 0) console.log(2);
+        else console.log(3);
+    }
 }

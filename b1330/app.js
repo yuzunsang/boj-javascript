@@ -2,13 +2,14 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-input = input[0].split(' ').map((item) => +item);
+const [a, b] = input[0].split(' ').map((item) => +item);
 
-solution(input[0], input[1]);
+if (a > b) {
+    console.log(">");
 
-function solution(a, b) {
-    let output = "";
-    output = (a > b) ? ">" : (a < b) ? "<" : "==";
+} else if (a < b) {
+    console.log("<");
 
-    console.log(output);
+} else {
+    console.log("==");
 }
