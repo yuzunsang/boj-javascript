@@ -5,15 +5,16 @@ let input = fs.readFileSync(filePath).toString().split('\n');
 const n = +input[0];
 
 for (let i = 1; i <= n; i++) {
-    let output = "";
+    let ans = '';
 
-    for (let j = n - 1; j >= i; j--) {
-        output += ' ';
+    for (let j = n - i; j >= 1; j--)
+    {
+        ans += ' ';
+    }
+    for (let k = 1; k <= i; k++)
+    {
+        ans += '*';
     }
 
-    for (let j = 1; j <= i; j++) {
-        output += '*';
-    }
-
-    console.log(output);
+    console.log(ans);
 }
