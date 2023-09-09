@@ -2,27 +2,16 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-const [N, M] = input[0].split(' ').map((item) => +item);
-// N : 5 , M : 4
-let arr = new Array(N);
-// [ <5 empty items> ]
-solution(N, M);
+const [n ,m] = input[0].split(' ').map((item) => +item);
+const arr = new Array(n).fill(0);
 
-function solution(N, M) {
-    for (let i = 1; i <= M; i++) {
-        let [start, end, k] = input[i].split(' ').map((item) => +item);
+for (let i = 1; i <= m; i++) {
+    let [a, b, c] = input[i].split(' ').map((item) => +item);
 
-        for (let j = start; j <= end; j++) {
-            arr[j - 1] = k;
-        }
-        
+    for (let j = a; j <= b; j++)
+    {
+        arr[j - 1] = c;
     }
-
-    for (let i = 0; i < N; i++) {
-        if (arr[i] === undefined) {
-            arr[i] = 0;
-        }
-    }
-    
-    console.log(arr.join(' '));
 }
+
+console.log(arr.join(' '));
