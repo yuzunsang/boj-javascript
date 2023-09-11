@@ -3,14 +3,9 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
 const N = +input[0];
+const score = input[1].split(' ').map((item) => +item);
+const max = Math.max(...score);
 
-const arr = input[1].split(' ').map((item) => +item);
-const M = Math.max(...arr);
+let sum = score.reduce((a, b) => a + b);
 
-for (let i = 0; i < arr.length; i++) {
-    arr[i] = (arr[i] / M) * 100;
-}
-
-let sum = arr.reduce((a, b) =>  a + b , 0);
-
-console.log(sum / arr.length);
+console.log((sum / N) / max * 100);

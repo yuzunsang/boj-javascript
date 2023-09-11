@@ -3,13 +3,18 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
 const [A, B] = input[0].split(' ');
-// 839 237
 
-let num1 = Number(A.split('').reverse().join(''));
-let num2 = Number(B.split('').reverse().join(''));
+let splitedA = A.split('');
+let splitedB = B.split('');
 
-console.log(findMax(num1, num2));
+let reversedA = splitedA.reverse();
+let reversedB = splitedB.reverse();
 
-function findMax(num1, num2) {
-    return Math.max(num1, num2);
+let joinedA = reversedA.join('');
+let joinedB = reversedB.join('');
+
+if (joinedA > joinedB) {
+    console.log(joinedA);
+} else {
+    console.log(joinedB);
 }

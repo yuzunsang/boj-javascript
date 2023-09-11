@@ -3,6 +3,4 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
 const S = input[0].split('');
-const N = +input[1];
-
-console.log(S[N - 1]);
+console.log(S[Number(input[1]) - 1]);

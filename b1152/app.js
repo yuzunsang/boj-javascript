@@ -1,15 +1,6 @@
 const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
-let input = fs.readFileSync(filePath).toString().split('\n');
+let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
-input = input[0];
-let wordsArr = input.trim().split(' '); 
-let countOfWords = 0;
-
-for (let i = 0; i < wordsArr.length; i++) {
-  if (wordsArr[i] !== '') {
-    countOfWords++;
-  }
-}
-
-console.log(countOfWords);
+input = input[0].split(' ');
+console.log(input == "" ? 0 : input.length);
