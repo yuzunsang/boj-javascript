@@ -2,38 +2,28 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().split('\n');
 
-const NM = input.shift().split(' ').map(num => Number(num));
-const N = NM.shift();
-const M = NM.shift();
-const cards = input.shift().split(' ').map(num => Number(num));
-let picked = new Array(N);
-picked.fill(false, 0, N);
+// 1. 단순 반복으로 풀기 (시간복잡도 0(10^3))
+const [N, M] = input[0].split(' ').map((item) => +item);
+const cards = input[1].split(' ').map((item) => +item);
 
-let min = 300000;
 let sum = 0;
-let answer = 0;
+let ans = 0;
 
+for (let i = 0; i < N; i++) {
+  for (let j = i + 1; j < N; j++) {
+    for (let k = j + 1; k < N; k++) {
+      sum = cards[i] + cards[j] + cards[k];
 
-solution(3, 0);
-console.log(answer);
+      if (sum <= M && sum > ans) {
+        ans = sum;
+      }
 
-function solution(last, start) {
-  if (last === 0) {
-    if (sum <= M && M - sum < min) {
-      min = M - sum;      
-      answer = sum;
-      return sum;
-    }
-    return;
-  }
-
-  for (let i = start; i < cards.length; i++) {
-    if (!picked[i]) {
-      picked[i] = true;
-      sum += cards[i];
-      solution(last - 1, i);
-      picked[i] = false;
-      sum -= cards[i];
+      if (sum === M) {
+        console.log(sum);
+        return;
+      }
     }
   }
 }
+
+console.log(ans);
