@@ -2,18 +2,18 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
-let NM = input.shift().split(' ');
-let N = Number(NM.shift());
-let M = Number(NM.shift());
-let white = ['WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW']
-let black = ['BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB']
+const [N, M] = input[0].split(' ').map((item) => +item);
+// 정상적인 체스판
+let white = ['WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW'];
+let black = ['BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB'];
+let answer = 8 * 8;
 
+// 주어진 체스판
 let board = [];
-for (let i = 0; i < N; i++) {
-  board[i] = input.shift().split('');
+for (let i = 1; i <= N; i++) {
+  board[i - 1] = input[i].split('');
 }
 
-let answer = 90;
 
 for (let i = 0; i <= N - 8; i++) {
   for (let j = 0; j <= M - 8; j++) {
